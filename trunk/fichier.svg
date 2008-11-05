@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>     
+       
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<script>
+	function move() {
+		document.getElementById('line').setAttribute('y2',500);
+	}
+</script>
+
+<script xlink:href="interface.js"/>
+
+<line id="line" x1="100" y1="300" x2="300" y2="100" stroke="green" stroke-width="5" />	
+<!--<rect onmouseover="alert('coucou')" fill="red" x="100" y="100" width="100" height="100"></rect>-->
+<!--<rect onmouseover="document.getElementById('line').setAttribute('y2',500);" fill="red" x="100" y="100" width="100" height="100"></rect>-->
+<rect onmouseover="move()" fill="red" x="100" y="100" width="100" height="100"></rect>
+</svg>
