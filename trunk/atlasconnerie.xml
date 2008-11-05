@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Atlas de la connerie -->
+<conneries>
+<connerie temps="maintenant" subjectivite="aucune" >
+	<espace lat="45" lng="12" alt="7" />
+	<span class="geo">
+     <span class="latitude">52.48</span>,
+     <span class="longitude">-1.89</span>
+    </span>
+</connerie>
+<connerie espace="là-bas" temps="après" subjectivite="moi" />
+<connerie espace="là-bas" temps="après" subjectivite="moi" />
+<connerie espace="là-bas" temps="après" subjectivite="moi" />
+<connerie espace="là-bas" temps="après" subjectivite="moi" />
+<connerie espace="là-bas" temps="après" subjectivite="moi" />
+</conneries>
+
+
+
