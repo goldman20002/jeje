@@ -30,17 +30,16 @@ foreach($xml->xpath('//item') as $item)
 	$base = explode(" ", $titre);
 	$pieces = str_replace("&nbsp;", "", $base);
 	$nb=count($pieces);
-	/*for($i=0;$i<$nb;$i++) {				
-
-	}*/
 	
+	$counts = array_count_values($pieces);
 	$result = array_unique($pieces);
 		
-	foreach($result as $valeurs) {
- 	$x = rand(0, 1000);
+	foreach ($counts as $nom => $valeurs) {
+	$chiffre = $valeurs+"9";
+	$x = rand(0, 1000);
 	$y = rand(0, 600);
-	echo'<g font-family="Verdana" font-size="'.$size.'" >
-	<text x="'.$x.'" y="'.$y.'" fill="blue" >'.$valeurs.'</text>
+	echo'<g font-family="Verdana" font-size="'.$chiffre.'" >
+	<text x="'.$x.'" y="'.$y.'" fill="blue" >'.$nom.'</text>
 	</g>'; 
 	}
 
