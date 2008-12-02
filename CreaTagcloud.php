@@ -5,7 +5,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 '; 
 ///
 //Récuperation du flux RSS de http://www.metalorgie.com
-$xml = simplexml_load_file("http://www.metalorgie.com/metal/rss.php");
+$xml = simplexml_load_string(file_get_contents("http://www.metalorgie.com/metal/rss.php"));
 
 /*function html() {
 	return <<< EOF
