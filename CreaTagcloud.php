@@ -1,11 +1,12 @@
 <?php
+//ini_set('allow_url_fopen', On);
 header("Content-type: image/svg+xml");
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <svg width="30cm" height="20cm" viewBox="0 0 1024 768" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 '; 
 ///
 //Récuperation du flux RSS de http://www.metalorgie.com
-$xml = simplexml_load_string(file_get_contents("http://www.metalorgie.com/metal/rss.php"));
+$xml = simplexml_load_file('http://www.metalorgie.com/metal/rss.php');
 
 /*function html() {
 	return <<< EOF
