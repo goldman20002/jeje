@@ -100,9 +100,10 @@ foreach($xml->xpath('//item') as $item)
 
 //3 fractionnement de la chaine en éléments
 //$tableau_elements = explode(" ", $minuscule);
-$separateur =" .; :!? ,- –—«»/’…()[]\n\t\r\x";
-$pieces = str_replace("&nbsp;", " ", $titre);
-$pieces = str_replace("&nbsp;", " ", $titre);
+$separateur =" .; :!? ,- –—«»/|’…()[]\n\t\r\x";
+$accent = str_replace("&#8217","'",$titre);
+$quot = str_replace("&quot","",$accent);
+$pieces = str_replace("&nbsp;", " ", $quot);
 $tableau_elements = fractionner($separateur,$pieces);
 
 // Filtrage des éléments
@@ -117,7 +118,6 @@ $nb=count($tableau_elements_filtrer);
 $counts = array_count_values($tableau_elements_filtrer);
 //Dï¿½doublonne un tableau
 $result = array_unique($tableau_elements_filtrer);
-
 //Affichage
 echo '<div id="tagcloud">';
 echo '<svg width="20cm" height="20cm" viewBox="0 0 1024 768" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
