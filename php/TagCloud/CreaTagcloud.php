@@ -101,9 +101,10 @@ foreach($xml->xpath('//item') as $item)
 //3 fractionnement de la chaine en éléments
 //$tableau_elements = explode(" ", $minuscule);
 $separateur =" .; :!? ,- –—«»/|’…()[]\n\t\r\x";
-$accent = str_replace("&#8217","'",$titre);
-$quot = str_replace("&quot","",$accent);
-$pieces = str_replace("&nbsp;", " ", $quot);
+$accent = str_replace("&#8217;","'",$titre);
+$quot = str_replace("&quot"," ",$accent);
+$amp = str_replace("&amp"," ",$quot);
+$pieces = str_replace("&nbsp;", " ", $amp);
 $tableau_elements = fractionner($separateur,$pieces);
 
 // Filtrage des éléments
