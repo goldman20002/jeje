@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Jeu de carte // Cartomancie-->
+<jeu>
+<cartes type="Trèfles" couleur="noir">
+<carte valeur="As"><text>Réussite complète. Cette carte symbolise le triomphe, le succès.</text></carte>
+<carte valeur="Roi"><text>Homme qui peut être un partenaire, collaborateur. Homme bénéfique qui protège. Ce peut-etre aussi le Consultant (homme aux cheveux bruns ou noirs).</text></carte>
+<carte valeur="Dame"/>
+<carte valeur="Valet"/>
+<carte valeur="Dix"/>
+<carte valeur="Neuf"/>
+<carte valeur="Huit"/>
+<carte valeur="Sept"/>
+<carte valeur="Six"/>
+<carte valeur="Cinq"/>
+<carte valeur="Quatre"/>
+<carte valeur="Trois"/>
+<carte valeur="Deux"/>
+</cartes>
+
+<cartes type="Coeur" couleur="rouge">
+<carte valeur="As"/>
+<carte valeur="Roi"/>
+<carte valeur="Dame"/>
+<carte valeur="Valet"/>
+<carte valeur="Dix"/>
+<carte valeur="Neuf"/>
+<carte valeur="Huit"/>
+<carte valeur="Sept"/>
+<carte valeur="Six"/>
+<carte valeur="Cinq"/>
+<carte valeur="Quatre"/>
+<carte valeur="Trois"/>
+<carte valeur="Deux"/>
+</cartes>
+
+<cartes type="Carreaux" couleur="rouge">
+<carte valeur="As"/>
+<carte valeur="Roi"/>
+<carte valeur="Dame"/>
+<carte valeur="Valet"/>
+<carte valeur="Dix"/>
+<carte valeur="Neuf"/>
+<carte valeur="Huit"/>
+<carte valeur="Sept"/>
+<carte valeur="Six"/>
+<carte valeur="Cinq"/>
+<carte valeur="Quatre"/>
+<carte valeur="Trois"/>
+<carte valeur="Deux"/>
+</cartes>
+
+<cartes type="Piques"  couleur="noir">
+<carte valeur="As"/>
+<carte valeur="Roi"/>
+<carte valeur="Dame"/>
+<carte valeur="Valet"/>
+<carte valeur="Dix"/>
+<carte valeur="Neuf"/>
+<carte valeur="Huit"/>
+<carte valeur="Sept"/>
+<carte valeur="Six"/>
+<carte valeur="Cinq"/>
+<carte valeur="Quatre"/>
+<carte valeur="Trois"/>
+<carte valeur="Deux"/>
+</cartes>
+</jeu>

@@ -6,11 +6,17 @@ function html() {
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
 	<meta http-equiv="content-language" content="fr,en" />
+	<link href="tagcloud.css" rel="stylesheet" type="text/css" />
 	<title>TagCloud</title>
 	</head>
 	<body>
+	<div id="header">
+	<div id="logo"></div>
+	</div>
+	<div id="ligne"></div>
+	<div id="conteneur">	
 	<form name="tagcloud" action="CreaTagcloud.php" method="post" enctype="application/x-www-form-urlencoded">
-	<table border="0" cellspacing="2" cellpadding="3" width="230px" height="200px">
+	<table>
 	<tr>
 	<td><p class="titre">Veuillez entrer un flux RSS :</p>
 	<span><input class="input" name="lien" type="text"/></span>
@@ -20,6 +26,11 @@ function html() {
 	</tr>
 	</table>
 	</form>
+	</div>
+	<div id="contenu">
+	<p>TagCloud RSS</p>
+	</div>
+	<div id='footer'></div>
 	</body>
 	<html>
 EOF;
