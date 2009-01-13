@@ -1,46 +1,9 @@
 <?php
 
 header("Content-type: image/svg+xml");
-echo '<?xml version="1.0" encoding="UTF-8"?>';
+echo '<?xml version="1.0" encoding="utf-8"?>';
 
 /***********FONCTIONS********************/
-//html 
-function html() {
-	return <<< EOF
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-	<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-	<meta http-equiv="content-language" content="fr,en" />
-	<title>TagCloud</title>
-	<style type="text/css">
-	
-	body {
-		background:#000;
-	}
-	
-	#tagcloud {
-		width:600px;
-		height:600px;
-		margin-left:auto;
-		margin-right:auto;
-	}
-	</style>
-	
-	</head>
-	<body>	
-EOF;
-}
-
-echo html();
-function html_fin() {
-	return <<< EOF
-	</div>
-	</body>
-	</html>
-EOF;
-}
-
 //fractionnement de la chaine en éléments
 function fractionner($separateur,$chaine)
 {
@@ -71,45 +34,46 @@ function filtrer1($tableau_elements)
 	foreach($tableau_elements as $mot) 
 	{
 		//strlen calcule la taille d'une chaine
-		if(strlen($mot)>=2) $tab[] = $mot;
+		if(strlen($mot)>2) $tab[] = $mot;
 	}
 	return $tab;
 	
 }
+
 /***********FONCTIONS********************/
 
 ///
-//Récuperation du flux RSS de http://www.metalorgie.com
-//$xml = simplexml_load_file('http://www.metalorgie.com/metal/rss.php');
 $xml = simplexml_load_file($_POST['lien']);
 //FREE bloque les appels externe, j'ai donc récuperer dans un fichier que je met sur le serveur, le contenu du RSS
 //$xml = simplexml_load_file('metalorgie.xml');
 
-//Je ne prend que les titres des news, elles reprï¿½sentent en faite le contenu
 //Je parse les éléments du flux RSS
 $titre="";
-// 1 Lecture de la source
+// Lecture de la source
 foreach($xml->xpath('//item') as $item)
 	{
 	$titre.=$item->title;
 	$titre.=$item->description;
 	}
 	
-//2 Mettre en miniscule
 //$minuscule = strtolower($titre);
 
-//3 fractionnement de la chaine en éléments
+//Suppression des balises html, encodage des caractères,
+$rss = strip_tags($titre);
+$rss = utf8_decode($rss);
+$rss = preg_replace('#[[:punct:]]#', " ",$rss);
+$rss = utf8_encode($rss);
 //$tableau_elements = explode(" ", $minuscule);
-$separateur =" .; :!? ,- –—«»/|’…()[]\n\t\r\x";
-$accent = str_replace("&#8217;","'",$titre);
+$accent = str_replace("com"," ",$rss);
 $quot = str_replace("&quot"," ",$accent);
 $amp = str_replace("&amp"," ",$quot);
 $pieces = str_replace("&nbsp;", " ", $amp);
+//Fractionnement de la chaine en éléments
+$separateur =" .; :!? ,- –—«»/|’…()[]\n\t\r";
 $tableau_elements = fractionner($separateur,$pieces);
 
 // Filtrage des éléments
 //On considère qu'un mot de plus de 2 caractères est intéressant.
-
 $tableau_elements_filtrer = filtrer1($tableau_elements);
 
 //Suppression des doublons
@@ -117,21 +81,44 @@ $nb=count($tableau_elements_filtrer);
 
 //Compte le nombre de doublons par mot	
 $counts = array_count_values($tableau_elements_filtrer);
-//Dï¿½doublonne un tableau
+//Dédoublonne un tableau
 $result = array_unique($tableau_elements_filtrer);
+
 //Affichage
-echo '<div id="tagcloud">';
-echo '<svg width="20cm" height="20cm" viewBox="0 0 1024 768" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-';
+echo '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">';
+echo '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg" onload="f_initialisation();">';
+echo '<title>Tagcloud</title>';
+echo '<script type="text/javascript">
+function f_initialisation() {
+	var screen_x = screen.availWidth;
+	var screen_y = screen.availHeight;
+	var div = document.getElementById("svg");
+	div.setAttribute("width",screen_x+"px");
+	div.setAttribute("height",screen_y+"px");
+}	
+</script>';
+echo '<g>';
+$x=0;
+$y=20;
 foreach ($counts as $nom => $valeurs) {
-	$chiffre = $valeurs*"8";
-	$x = rand(0, 800);
-	$y = rand(0, 600);
-	echo'<g font-family="Verdana" font-size="'.$chiffre.'" >
+	if ($valeurs>=2) {
+	$chiffre = $valeurs+12;
+	//Méthode de placement aléatoire
+	/*$x = rand(0, 800);
+	$y = rand(0, 600);*/
+	//Méthode de placement classé
+	$taille_mots=strlen($nom)*$chiffre;
+	if ($x>1000){
+	$y+=$chiffre+10;
+	$x=0;
+	}
+	$x += $taille_mots+50;
+	echo'<g font-family="Arial" font-size="'.$chiffre.'pt" >
 	<text x="'.$x.'" y="'.$y.'" fill="blue" >'.$nom.'</text>
 	</g>'; 
+	}
 }
-
+echo '</g>';
 echo '</svg>';
-echo html_fin();
+
 ?>
