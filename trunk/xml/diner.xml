@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Dîner entre amis-->
+
+<repas>
+
+<liste>
+<source type="maraicher" heure="8h">
+<ingredient valeur="carotte" quantite="3kg"/>
+<ingredient valeur="poireau" quantite="2kg"/>
+<ingredient valeur="navet" quantite="1kg"/>
+<ingredient valeur="patate" quantite="2kg"/>
+<ingredient valeur="salade" quantite="1"/>
+<ingredient valeur="pomme" quantite="1kg"/>
+</source>
+<source type="boucher" heure="9h">
+<ingredient valeur="queue de boeuf" quantite="1"/>
+<ingredient valeur="macreuse" quantite="1kg"/>
+<ingredient valeur="os à moelle" quantite="1"/>
+<ingredient valeur="fromage de chèvre" quantite="1"/>
+<ingredient valeur="olives" quantite=""/>
+</source>
+<source type="moi" heure="10h">
+<ingredient valeur="bouquet garni" quantite="1"/>
+<ingredient valeur="tarte" quantite="1"/>
+<ingredient valeur="bouteille de chinon" quantite="1"/>
+</source>
+<source type="Damien" heure="12h">
+<ingredient valeur="bouteille de Riesling" quantite="1"/>
+</source>
+</liste>
+
+<invites>
+<invite nom="Damien"/>
+<invite nom="Céline"/>
+<invite nom="Stéphanie"/>
+<invite nom="Vincent"/>
+</invites>
+
+</repas>
