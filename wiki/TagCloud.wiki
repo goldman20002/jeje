@@ -27,7 +27,7 @@ Deux fonctions entrent alors en jeu.
 
 Les fonction "fractionner" et "filtrer1". 
 La fonction "fractionner" comme son nom l'indique fractionne les éléments en fonction d'éléments séparateur (espaces,;,. etc...).
-La fonction "filtrer1" quand à elle filtre les mots et ne garde seulement ceux qui sont composé de plus de deux caractères afin d'éviter la répétition de mots tels que "le" "la" "ou".
+La fonction "filtrer1" quand à elle filtre les mots et ne garde seulement ceux qui sont composé de plus de deux caractères afin d'éviter la répétition de mots tels que "le" "la" "ou". Il est à noter que les mots qui ne sont pas présents un minimum de 2 fois dans le contenu n'est pas affiché. Il n'est pas considérer comme étant un mots clé.
 Tout cela est stocké dans un tableau.
 
 Il convient ensuite de supprimer les doublons et de compter le nombre d'occurrence par mots.
