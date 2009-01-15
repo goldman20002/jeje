@@ -63,6 +63,7 @@ $rss = strip_tags($titre);
 $rss = utf8_decode($rss);
 $rss = preg_replace('#[[:punct:]]#', " ",$rss);
 $rss = utf8_encode($rss);
+//$rss = html_entity_decode($rss);
 //$tableau_elements = explode(" ", $minuscule);
 $accent = str_replace("com"," ",$rss);
 $quot = str_replace("&quot"," ",$accent);
@@ -98,8 +99,9 @@ function f_initialisation() {
 }	
 </script>';
 echo '<g>';
+echo '<rect width="100%" height="50" x="0" y="0" fill="blue" id="barre" />';
 $x=0;
-$y=20;
+$y=100;
 foreach ($counts as $nom => $valeurs) {
 	if ($valeurs>=2) {
 	$chiffre = $valeurs+12;
